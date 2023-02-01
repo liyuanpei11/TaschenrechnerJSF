@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Notebook
+  Date: 31.01.2023
+  Time: 08:48
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Login</title>
+</h:head>
+
+<h:body>
+    <h1>Hier Einloggen!!!</h1><br/>
+    <h:form acceptcharset="UTF-8">
+        <h:panelGrid columns="3">
+        <h:outputLabel value="Username:"/>
+        <h:inputText id="benutzername" value="#{login.username}"
+            validatorMessage="Der Benutzername muss zwischen 4 und 20 Zeichen lang sein.">
+            <f:validateRequired/>
+            <f:validateLength minimum="4" maximum="20"/>
+        </h:inputText>
+        <h:message for="benutzername" style="color: red"/>
+        <h:outputLabel value="Passwort:"/>
+            <h:inputSecret id="password" value="#{login.password}"
+                validatorMessage="Der Password muss zwischen 4 und 20 Zeichen lang sein.">
+                <f:validateRequired/>
+                <f:validateLength minimum="4" maximum="20"/>
+            </h:inputSecret>
+            <h:message for="password" style="color: red"/>
+        <h:commandButton action='#{login.doLogin()}' value="Login"/>
+        <h:commandButton action="register" value="Registieren" immediate="true"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+
+</html>

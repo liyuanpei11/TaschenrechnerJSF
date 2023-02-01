@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: Notebook
+  Date: 30.01.2023
+  Time: 14:40
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Willkommen, #{login.username}!</title>
+</h:head>
+
+<h:body>
+    <h1>Herzlich Willkommen auf deiner Übersicht, #{login.username}!</h1>
+    <h:dataTable value="#{todo.todoList}" var="l">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{l.id}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Beschreibung</f:facet>
+            <h:outputText value="#{l.beschreibung}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Bearbeiten</f:facet>
+            <h:form>
+                <h:commandLink action='#{todo.doEdit(l.id)}' value="Bearbeiten"/>
+            </h:form>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Löschen</f:facet>
+            <h:form>
+                <h:commandLink action="#{todo.doDelete(l.id)}" value="Löschen"/>
+            </h:form>
+        </h:column>
+    </h:dataTable>
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:commandButton action="addtodo" value="Hinzufügen"/>
+            <h:commandButton action="login" value="Logout"/>
+        </h:panelGrid>
+    </h:form>
+</h:body>
+
+</html>
